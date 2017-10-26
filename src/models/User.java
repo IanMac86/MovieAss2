@@ -15,6 +15,7 @@ public class User {
 	  public Long id;
 	  public Long counter = (long) 01;
 
+	 // public Map<Long, Activity> activities = new HashMap<>();
 	 	
 	  
 	  public User(String firstName, String lastName, String gender, String age,String occupation) {
