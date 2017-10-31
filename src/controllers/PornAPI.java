@@ -4,6 +4,9 @@ package controllers;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+
+import com.google.common.base.Optional;
+
 import models.Movie;
 import models.Rating;
 import models.User;
@@ -14,6 +17,10 @@ public class PornAPI
 	 private Map<String, User>emailIndex = new HashMap<>();
 	 private Map<Long, Movie> movieIndex = new HashMap<>();
 	
+	 public PornAPI()
+	 {
+	 
+	 }
 	 
 	 public Collection<User> getUsers ()
 	  {
@@ -63,7 +70,7 @@ public class PornAPI
     }
   }
 
-  public movie getmovie (Long id)
+  public Movie getMovie (Long id)
   {
     return movieIndex.get(id);
   }
