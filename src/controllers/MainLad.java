@@ -21,7 +21,7 @@ public class MainLad
     Collection<User> users = CodeRedMoviesAPI.getUsers();
     System.out.println(users);
 
-    User homer = CodeRedMoviesAPI.getUserByAge("38");
+    User homer = CodeRedMoviesAPI.getUserByFirstName("Bart");
     System.out.println(homer);
 
     CodeRedMoviesAPI.deleteUser(homer.id);

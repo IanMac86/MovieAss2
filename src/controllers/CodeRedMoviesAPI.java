@@ -44,9 +44,9 @@ public class CodeRedMoviesAPI
 	    return user;
 	  }
 	  
-	  public User getUserByAge(String age) 
+	  public User getUserByFirstName(String FirstName) 
 	  {
-	    return emailIndex.get(age);
+	    return emailIndex.get(FirstName);
 	  }
 	  
 	  public User getUser(Long id) 
@@ -59,19 +59,21 @@ public class CodeRedMoviesAPI
     User user = userIndex.remove(id);
     emailIndex.remove(user.age);
   }
+  public Movie addMovie(String title, String year, String director) {
+		 Movie movie = new Movie (title, year, director);
+		 movieIndex.put(movie.id, movie);
+		 return movie;
+	 }
   
-  public void createmovie(Long id, String title, String year, String director)
-  
-  {
-	  Movie movie = new Movie (title, year, director);
-    Optional<User> user = Optional.fromNullable(userIndex.get(id));
-    if (user.isPresent())
-    {
-      user.get().movie.put(movie.id, movie);
-      movieIndex.put(movie.id, movie);
-    }
-  }
-
+  public void removeMovie(String id)  {
+		 
+		 Optional<User> user = Optional.fromNullable(getUserByFirstName(id));
+		    if (user.isPresent())
+		    {
+		    	movieIndex.remove(id);
+		    }
+		    
+	  }
   public Movie getMovie (Long id)
   {
     return movieIndex.get(id);
@@ -82,7 +84,7 @@ public class CodeRedMoviesAPI
     Optional<Movie> movie = Optional.fromNullable(movieIndex.get(userRating));
     if (movie.isPresent())
     {
-    	movie.get().route.add(new Rating(userRating, rateMovie, ratingid));
+    	//movie.get().route.add(new Rating(userRating, rateMovie, ratingid));
 }
   }
   }
