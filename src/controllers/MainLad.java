@@ -12,20 +12,20 @@ public class MainLad
   {    
    
     
-    PornAPI pornAPI = new PornAPI();
+	  CodeRedMoviesAPI CodeRedMoviesAPI = new CodeRedMoviesAPI();
 
-    pornAPI.createUser("Bart", "Simpson","male","10", "School");
-    pornAPI.createUser("Homer", "Simpson","male" ,"38" ,"Nuclear");
-    pornAPI.createUser("Lisa", "Simpson", "female", "8","School/Jazz Musican");
+	  CodeRedMoviesAPI.createUser("Bart", "Simpson","male","10", "School");
+	  CodeRedMoviesAPI.createUser("Homer", "Simpson","male" ,"38" ,"Nuclear");
+	  CodeRedMoviesAPI.createUser("Lisa", "Simpson", "female", "8","School/Jazz Musican");
 
-    Collection<User> users = pornAPI.getUsers();
+    Collection<User> users = CodeRedMoviesAPI.getUsers();
     System.out.println(users);
 
-    User homer = pornAPI.getUserByAge("38");
+    User homer = CodeRedMoviesAPI.getUserByAge("38");
     System.out.println(homer);
 
-    pornAPI.deleteUser(homer.id);
-    users = pornAPI.getUsers();
+    CodeRedMoviesAPI.deleteUser(homer.id);
+    users = CodeRedMoviesAPI.getUsers();
     System.out.println(users);
   }
 }

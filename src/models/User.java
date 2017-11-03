@@ -27,6 +27,45 @@ public class User {
 		this.occupation = occupation;
 		this.id = counter ++;
 	}
+	  public void setFirstName(String firstName){
+			 this.firstName = firstName;
+		 }
+		 
+		 public String getFirstName(){
+			 return firstName;
+		 }
+		 
+		 public void setLastName(String lastName){
+			 this.lastName = lastName;
+		 }
+		 
+		 public String getLastName(){
+			 return lastName;
+		 }
+		 
+		 public void setAge(String age){
+			 this.age = age;
+		 }
+		 
+		 public String getAge(){
+			 return age;
+		 }
+		 
+		 public void setGender(String gender){
+			 this.gender = gender;
+		 }
+		 
+		 public String getgender(){
+			 return gender;
+		 }
+		 
+		 public void setOccupation(String occupation){
+			 this.occupation = occupation;
+		 }
+		 
+		 public String getOccupation(){
+			 return occupation;
+		 }
 
 	@Override  
 	  public int hashCode()  

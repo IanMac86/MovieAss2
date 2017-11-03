@@ -12,9 +12,9 @@ public class Movie {
 
 	  public Long   id;
 
-	  public String type;
-	  public String location;
-	  public double distance;
+	  public String title;
+	  public String year;
+	  public String director;
 
 	  public List<Movie > route = new ArrayList<>();
 
@@ -22,21 +22,47 @@ public class Movie {
 	  {
 	  }
 
-	  public Movie (String type, String location, double distance)
+	  public Movie (String title, String year, String director)
 	  {
 	    this.id        = counter++;
-	    this.type      = type;
-	    this.location  = location;
-	    this.distance  = distance;
+	    this.title     = title;
+	    this.year      = year;
+	    this.director  = director;
 	  }
+
+	  public void setTitle(String title){
+			 this.title = title;
+		 }
+		 
+		 public String getTitle(){
+			 return title;
+		 }
+		 
+		 public void setYear(String year){
+			 this.year = year;
+		 }
+		 
+		 public String getYear(){
+			 return year;
+		 }
+		 		 		
+		 public void setDirector(String director){
+			 this.director = director;
+		 }
+		 
+		 public String getDirector(){
+			 return director;
+		 }
+		 
+		 
 
 	  @Override
 	  public String toString()
 	  {
 	    return toStringHelper(this).addValue(id)
-	                               .addValue(type)
-	                               .addValue(location)
-	                               .addValue(distance)
+	                               .addValue(title)
+	                               .addValue(year)
+	                               .addValue(director)
 	                               .addValue(route)
 	                               .toString();
 	  }
@@ -44,7 +70,7 @@ public class Movie {
 	  @Override  
 	  public int hashCode()  
 	  {  
-	     return Objects.hashCode(this.id, this.type, this.location, this.distance);  
+	     return Objects.hashCode(this.id, this.title, this.year, this.director);  
 	  } 
 	}
 //activtities to movies

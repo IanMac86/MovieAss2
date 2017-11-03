@@ -11,13 +11,13 @@ import models.Movie;
 import models.Rating;
 import models.User;
 
-public class PornAPI
+public class CodeRedMoviesAPI
 {
 	 private Map<Long, User> userIndex  = new HashMap<>();
 	 private Map<String, User>emailIndex = new HashMap<>();
 	 private Map<Long, Movie> movieIndex = new HashMap<>();
 	
-	 public PornAPI()
+	 public CodeRedMoviesAPI()
 	 {
 	 
 	 }
@@ -59,9 +59,11 @@ public class PornAPI
     User user = userIndex.remove(id);
     emailIndex.remove(user.age);
   }
-  public void createmovie(Long id, String type, String location, double distance)
+  
+  public void createmovie(Long id, String title, String year, String director)
+  
   {
-	  Movie movie = new Movie (type, location, distance);
+	  Movie movie = new Movie (title, year, director);
     Optional<User> user = Optional.fromNullable(userIndex.get(id));
     if (user.isPresent())
     {
@@ -75,12 +77,12 @@ public class PornAPI
     return movieIndex.get(id);
   }
 
-  public void addRating(Long id, float latitude, float longitude)
+  public void addRating(int userRating, int rateMovie, int ratingid)
   {
-    Optional<Movie> movie = Optional.fromNullable(movieIndex.get(id));
+    Optional<Movie> movie = Optional.fromNullable(movieIndex.get(userRating));
     if (movie.isPresent())
     {
-    	movie.get().route.add(new Rating(latitude, longitude));
+    	movie.get().route.add(new Rating(userRating, rateMovie, ratingid));
 }
   }
   }
