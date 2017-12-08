@@ -1,8 +1,11 @@
 package controllers;
 
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.google.common.base.Optional;
@@ -10,44 +13,75 @@ import com.google.common.base.Optional;
 import models.Movie;
 import models.Rating;
 import models.User;
+import Utils.Serializer;
 
 public class CodeRedMoviesAPI
 {
+	 private Serializer serializer;
 	 private Map<Long, User> userIndex  = new HashMap<>();
-	 private Map<String, User>emailIndex = new HashMap<>();
-	 private Map<Long, Movie> movieIndex = new HashMap<>();
+	 private Map<String, Movie>movieIndex = new HashMap<>();
+	 private Map<String, Rating> ratingIndex = new HashMap<>();
 	
 	 public CodeRedMoviesAPI()
 	 {
 	 
 	 }
 	 
-	 public Collection<User> getUsers ()
+	
+	 
+
+	
+	  public CodeRedMoviesAPI(Serializer serializer)
+	  {
+	    this.serializer = serializer;
+	  }
+
+	  @SuppressWarnings("unchecked")
+	  public void load() throws Exception
+	  {
+	    serializer.read();
+	      userIndex   = (Map<Long, User>)  serializer.pop();
+	      ratingIndex = (Map<String, Rating>)   serializer.pop();
+	      movieIndex = (Map<String, Movie>) serializer.pop();
+	    }
+	   
+	  void store() throws Exception
+	  {
+	    serializer.push(userIndex);
+	    serializer.push(ratingIndex);
+	    serializer.push(movieIndex);
+	    serializer.write(); 
+	  }
+	    
+	  public Collection<User> getUsers ()
 	  {
 	    return userIndex.values();
 	  }
-
-
-  
+	 
+	   
 
 	 public  void deleteUsers() 
 	  {
 	    userIndex.clear();
-	    emailIndex.clear();
 	  }
 
 	  public User createUser(String firstName, String lastName, String age, String gender, String occupation) 
 	  {
 	    User user = new User (firstName, lastName, age, gender, occupation);
 	    userIndex.put(user.id, user);
-	    emailIndex.put(age, user);
 	    return user;
+	  }
+	  
+	  public Movie getMovieByTitle(String Title) 
+	  {
+	    return movieIndex.get(Title);
 	  }
 	  
 	  public User getUserByFirstName(String FirstName) 
 	  {
-	    return emailIndex.get(FirstName);
+	    return userIndex.get(FirstName);
 	  }
+	  
 	  
 	  public User getUser(Long id) 
 	  {
@@ -57,20 +91,21 @@ public class CodeRedMoviesAPI
   public void deleteUser(Long id) 
   {
     User user = userIndex.remove(id);
-    emailIndex.remove(user.age);
-  }
+     }
+  
+  
   public Movie addMovie(String title, String year, String director) {
 		 Movie movie = new Movie (title, year, director);
-		 movieIndex.put(movie.id, movie);
+		 movieIndex.put(title, movie);
 		 return movie;
 	 }
   
-  public void removeMovie(String id)  {
+  public void removeMovie(String title)  {
 		 
-		 Optional<User> user = Optional.fromNullable(getUserByFirstName(id));
+		 Optional<Movie> user = Optional.fromNullable(getMovieByTitle(title));
 		    if (user.isPresent())
 		    {
-		    	movieIndex.remove(id);
+		    	movieIndex.remove(title);
 		    }
 		    
 	  }

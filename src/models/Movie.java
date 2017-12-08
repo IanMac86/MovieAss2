@@ -8,9 +8,9 @@ import java.util.List;
 import com.google.common.base.Objects;
 
 public class Movie { 
-	  static Long   counter = 0l;
+	  static long   counter = 0l;
 
-	  public Long   id;
+	  public long   id;
 
 	  public String title;
 	  public String year;
