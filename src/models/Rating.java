@@ -5,7 +5,8 @@ import static com.google.common.base.MoreObjects.toStringHelper;
 import com.google.common.base.Objects;
 
 public class Rating {
-	
+	 static long   counter = 0l;
+	 
 	  public int userRating;
 	  public int rateMovie;
 	  public int ratingid;

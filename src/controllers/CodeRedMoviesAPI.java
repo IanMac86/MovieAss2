@@ -122,5 +122,33 @@ public class CodeRedMoviesAPI
     	//movie.get().route.add(new Rating(userRating, rateMovie, ratingid));
 }
   }
+
+
+
+
+
+public void removeUser(String id) {
+	// TODO Auto-generated method stub
+	
+}
+
+
+
+
+
+public void addUser(String firstName, String lastName, String gender,
+		String age, String occupation) {
+	// TODO Auto-generated method stub
+	
+}
+
+
+
+
+
+public void rateMovie(String userId, String movieId, String rating) {
+	// TODO Auto-generated method stub
+	
+}
   }
 
